@@ -40,7 +40,7 @@ export const Form = styled.form<FormProps>`
 
   select {
     padding: 0 10px 0 10px;
-    margin: 0 10px 0 10px;
+    margin: 0 5px 0 5px;
     border-radius: 5px;
     border: none;
 
