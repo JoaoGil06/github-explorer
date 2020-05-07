@@ -19,6 +19,10 @@ export default createGlobalStyle`
     font: 16px Roboto, sans-serif;
   }
 
+  select {
+    font: 14px Roboto, sans-serif;
+  }
+
   #root {
     max-width: 960px;
     margin: 0 auto;

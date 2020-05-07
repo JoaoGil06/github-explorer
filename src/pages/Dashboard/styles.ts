@@ -25,10 +25,9 @@ export const Form = styled.form<FormProps>`
     height: 70px;
     padding: 0 24px;
     border: 0;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
     color: #3a3a3a;
     border: 2px solid #FFF;
-    border-right: 0;
 
     ${(props) => props.hasError && css`
       border-color: #c53030;
@@ -39,11 +38,22 @@ export const Form = styled.form<FormProps>`
     }
   }
 
+  select {
+    padding: 0 10px 0 10px;
+    margin: 0 10px 0 10px;
+    border-radius: 5px;
+    border: none;
+
+    ${(props) => props.hasError && css`
+      border: 2px solid #c53030;
+    `}
+  }
+
   button {
     width: 210px;
     height: 70px;
     background: #04D361;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
     border: 0;
     color: #FFF;
     font-weight: bold;
