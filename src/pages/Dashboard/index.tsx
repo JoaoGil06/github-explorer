@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom'
 
 import { Title, Form, Repositories, Error } from './styles'
 import logoImg from '../../assets/logo.svg';
-import { FiChevronRight } from 'react-icons/fi'
+import { FiChevronRight, FiTrash2 } from 'react-icons/fi'
 
 import {DebounceInput} from 'react-debounce-input';
 
 interface Repository {
+  id: string;
   full_name: string;
   description: string;
   owner: {
@@ -85,6 +86,18 @@ const Dashboard: React.FC = () => {
     }
   }
 
+  function handleRemoveRepository(id: string): void {
+    const repository = repositories.findIndex((rep) => rep.id === id);
+
+    if(repository >= 0) {
+      repositories.splice(repository, 1)
+
+      localStorage.setItem('@GithubExplorer:repositories', JSON.stringify(repositories))
+    }
+
+    setRepositories(repositories.filter((rep) => rep.id !== id));
+  }
+
 
   return (
     <>
@@ -118,20 +131,20 @@ const Dashboard: React.FC = () => {
 
       <Repositories>
         {repositories.map(repository => (
-          <Link key={repository.full_name} to={`/repositories/${repository.full_name}`}>
-          <img src={repository.owner.avatar_url}
-          alt={repository.owner.login} />
-          <div>
-            <strong>{repository.full_name}</strong>
-            <p>{repository.description}</p>
-          </div>
+          <span key={repository.full_name} >
+            <img src={repository.owner.avatar_url}
+            alt={repository.owner.login} />
+            <div>
+              <strong>{repository.full_name}</strong>
+              <p>{repository.description}</p>
+            </div>
+            <Link to={`/repositories/${repository.full_name}`}>
+              <FiChevronRight size={20} className={"chevron"} />
+            </Link>
 
-          <FiChevronRight size={20} />
-      </Link>
+            <FiTrash2 size={20} className={"trash"} onClick={() => handleRemoveRepository(repository.id)} />
+          </span>
         ))}
-
-
-
       </Repositories>
     </>
   )

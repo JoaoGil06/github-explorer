@@ -66,10 +66,11 @@ export const Form = styled.form<FormProps>`
 `;
 
 export const Repositories = styled.div`
+
   margin-top: 80px;
   max-width: 700px;
 
-  a {
+  span {
     background: #FFF;
     border-radius: 5px;
     width: 100%;
@@ -81,7 +82,7 @@ export const Repositories = styled.div`
     align-items: center;
     transition: transform 0.2s;
 
-    & + a {
+    & + span {
       margin-top: 16px;
     }
 
@@ -107,9 +108,18 @@ export const Repositories = styled.div`
       }
     }
 
-    svg {
+    .chevron, .trash {
       margin-left: auto;
       color: #CBCBD6;
+      cursor: pointer;
+    }
+
+    .chevron:hover{
+      color: #04D361;
+    }
+
+    .trash:hover {
+      color: #c53030;
     }
 
     &:hover {
