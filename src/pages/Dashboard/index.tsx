@@ -52,6 +52,8 @@ const Dashboard: React.FC = () => {
 
     getAllRepositories()
 
+    console.log(newUser)
+
   }, [newUser])
 
   useEffect(() => {
@@ -106,9 +108,11 @@ const Dashboard: React.FC = () => {
 
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
 
+
+
       <DebounceInput
           minLength={2}
-          debounceTimeout={400}
+          debounceTimeout={500}
           value={newUser}
           onChange={ (e) => setNewUser(e.target.value)}
           placeholder="Digita o nome do user" />
