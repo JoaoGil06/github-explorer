@@ -43,7 +43,7 @@ const Dashboard: React.FC = () => {
 
   useEffect( () =>  {
 
-    async function getAllRepositories() {
+    async function getAllRepositories(): Promise<void> {
       const response = await api.get<AllRepositories[]>(`users/${newUser}/repos`)
       const userRepositories = response.data
 
@@ -51,9 +51,6 @@ const Dashboard: React.FC = () => {
     }
 
     getAllRepositories()
-
-    console.log(newUser)
-
   }, [newUser])
 
   useEffect(() => {
